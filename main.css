@@ -4,19 +4,37 @@ h1 {
   margin: 1rem 0;
 }
 
-.redCell {
-  background-color: red;
-}
-
-.laser {
-  background-color: blue;
-}
-
-.clearCell {
-  background-color: white;
-}
-
 td {
   cursor: pointer;
   user-select: none;
+  height: 15px;
+  width: 15px;
+  border: none;
 }
+
+#laserfield-draw {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: none;
+}
+
+#laserfield-table {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: none;
+}
+
+#laserfield-container {
+  width: 60%;
+  margin: auto;
+  align-content: center;
+}
+
+.clearCell {
+  background-color: transparent;
+}
+
+
+

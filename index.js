@@ -6,7 +6,7 @@ const redCellUpdate = 1; //update red cells every "x" frames
 let frameNum = 0;
 //initiate game speed (in milliseconds)
 const tickSpeed = 500;
-//initiate field (x * y) - figure out how big you want the field
+//initiate field (x * y)
 const fieldXMax = 10;
 const fieldYMax = 5;
 let field = initiateField();
@@ -16,15 +16,18 @@ const clearCellChar = "-", redCellChar = "R", laserChar = "B"; //console display
 const clearCellCol = "grey", redCellCol = "red", laserCol = "blue"; //canvas display
 //initiate canvas
 let canvas = document.querySelector("canvas");
-let pixelSize = 15;
+let pixelSize = canvas.width / fieldXMax;
 canvas.width = pixelSize * fieldXMax;
 canvas.height = pixelSize * fieldYMax;
 let c = canvas.getContext("2d");
 //initiate html table 
-document.write(initiateTableHTML());
+document.getElementById("laserfield-table").innerHTML = initiateTableHTML();
 //initiate laser bar
 let laserPos = 1; // must be between 0 and fieldX
 let laserDir = 1; // must be 1 or -1
+//initiate score 
+let redCellsCleared = 0;
+let redCellsLasered = 0;
 
 //functions
 function main() {
@@ -64,6 +67,9 @@ function updateLaserPos() {
         laserPos += laserDir;
         //draw laser in new position
         for (row = 0; row < fieldYMax; row++) {
+            if (field[row][laserPos] === redCellChar) {
+                redCellsLasered += 1;
+            }
             field[row][laserPos] = laserChar;
         }
     }
@@ -89,9 +95,20 @@ function addRedCell() {
 
 function displayField() {
     //canvas
-    
-    //html
     for (let row = 0; row < fieldYMax; row++) {
+        for (let col = 0; col < fieldXMax; col++) {
+            if (field[row][col] === clearCellChar) {
+                c.fillStyle = clearCellCol;
+            } else if (field[row][col] === redCellChar) {
+                c.fillStyle = redCellCol; 
+            } else if (field[row][col] === laserChar) {
+                c.fillStyle = laserCol;
+            }
+            c.fillRect(col * pixelSize, row * pixelSize, pixelSize, pixelSize); 
+        }
+    }
+    //html
+    /*for (let row = 0; row < fieldYMax; row++) {
         for(let col = 0; col < fieldXMax; col++) {
             if (field[row][col] === clearCellChar) {
                 document.getElementById("laserTableCellR" + row + "C" + col).className = "clearCell";
@@ -101,7 +118,7 @@ function displayField() {
                 document.getElementById("laserTableCellR" + row + "C" + col).className = "laser";
             }
         }
-    }
+    }*/
     //console
     /*
     let dispStr = "";
@@ -128,13 +145,12 @@ function initiateTableHTML() {
     for (let row = 0; row < fieldYMax; row++) {
         tableStr = tableStr + "<tr>";
             for (col = 0; col < fieldXMax; col++) {
-                //table.rows[i].cells[j].onclick = tableRowClicked;  
-
-                tableStr += "<td class='clearCell' onclick='tableCellClicked(event)'" +
-                " id='laserTableCellR" + row + "C" + col +"'>" + row + col + "</td>";
+                tableStr += "<td style='height:" + pixelSize + "px; width:"
+                 + pixelSize + "px;' class='clearCell' onclick='tableCellClicked(event)'" +
+                " id='laserTableCellR" + row + "C" + col +"'></td>";
             }
         }
-    tableStr = "<table id='laserTable' border='1'>" + tableStr + "</tr></table>";
+    tableStr = "<table cellpadding='0' cellspacing='0' id='laserTable' border='1'>" + tableStr + "</tr></table>";
     return tableStr;
 }
 
@@ -152,6 +168,7 @@ function tableCellClicked(event) {
     //if those cells are a redcell, clear cell
     if (field[row][col] === redCellChar) {
         field[row][col] = clearCellChar;
+        redCellsCleared += 1;
     }
     displayField();
 }
