@@ -1,0 +1,22 @@
+h1 {
+  font-size: 250%;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.redCell {
+  background-color: red;
+}
+
+.laser {
+  background-color: blue;
+}
+
+.clearCell {
+  background-color: white;
+}
+
+td {
+  cursor: pointer;
+  user-select: none;
+}
