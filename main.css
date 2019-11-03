@@ -1,7 +1,12 @@
+body {
+  background-image: url("background.jpg");
+  padding: 0;
+  margin: 0;
+}
+
 h1 {
   font-size: 250%;
   text-align: center;
-  margin: 1rem 0;
 }
 
 td {
@@ -12,30 +17,51 @@ td {
   border: none;
 }
 
+.score {
+  text-align: center;
+  height: 50px;
+  width: 20%;
+  margin: auto;
+  float: left;
+  margin-top: 5px;
+}
+
+#laserfield-container{
+  height: 250px;
+}
+
 #laserfield-draw {
-  position: absolute;
-  top: 10%;
-  left: 30%;
+  position: fixed;
   z-index: 1;
   border: none;
+  display: inline-block;
 }
 
 #laserfield-table {
-  position: absolute;
-  top: 10%;
-  left: 30%;
+  position: fixed;
   z-index: 2;
   border: none;
+  display: inline-block;
 }
 
-#laserfield-container {
-  width: 60%;
+#main-container { 
+  width: 500px;
+  min-height: 70vh;
   margin: auto;
-  align-content: center;
+  margin-top: 0;
+  background-color: lightgray;
+}
+
+#score-display {
+ width: 100%;
 }
 
 .clearCell {
   background-color: transparent;
+}
+
+.developer {
+  display: none;
 }
 
 

@@ -1,15 +1,32 @@
 <!doctype html>
-<title>Deathlaser</title>
-<link rel="stylesheet" href="main.css">
+<head>
+  <title>Deathlaser</title>
+  <link rel="stylesheet" href="main.css">
+</head>
 
-<h1>Deathlaser</h1>
 <body>
-  <div id="laserfield-table"></div>
+  <section id="main-container">
+    <h1>Deathlaser</h1>
+      <section class="developer" id="frame-count"></section>
+      <section class="developer" id="difficulty-params"></section>
+
+      <div id="laserfield-container">
+        <div id="laserfield-table"></div>
+        <div id="laserfield-draw">
+          <canvas></canvas>
+        </div>
+      </div>
+
+      <div id="score-display">
+          <div class="score" id="laser-score"></div>
+          <div class="score" id="player-score"></div>
+          <div class="score" id="player-lives"></div>
+          <div class="score" id="restart-game">
+            <button onclick="restartGame(event)"> restart game</button>
+          </div>
+      </div>
+      <audio controls autoplay loop> <source src="deathlasertheme.mp3" type="audio/mp3"></audio>
+  </section>
   
-  <div id="laserfield-draw">
-    <canvas></canvas>
-  </div>
-
   <script src="index.js"></script>
-
 </body>
