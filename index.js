@@ -1,11 +1,11 @@
 /*frame count used to define how events happen, such as
 generating a red cell that must be clicked every 1 frames vs
 moving the laser bar every 2 frames */
-let laserUpdate = 90; //update laser every "x" frames
-let redCellUpdate = 60; //update red cells every "x" frames
+let laserUpdate = 18; //update laser every "x" frames
+let redCellUpdate = 12; //update red cells every "x" frames
 let frameNum = 0;
 //initiate game speed (in milliseconds)
-const tickSpeed = 20;
+const tickSpeed = 100;
 //initiate field (x * y)
 const fieldXMax = 14;
 const fieldYMax = 7;
@@ -65,11 +65,11 @@ function doGameMode() {
             prevLaserDir = laserDir;
             laserDirChanges += 1;
         }
-        if (redCellsCleared % 20 === 0 && bonusLivesUpdatedAt !== redCellsCleared) {
+        if (redCellsCleared % 4 === 0 && bonusLivesUpdatedAt !== redCellsCleared) {
             bonusLives += 1;
             bonusLivesUpdatedAt = redCellsCleared;
         }
-        if (redCellsCleared % 10 === 0 && prevScoreUpdate !== redCellsCleared) {
+        if (redCellsCleared % 2 === 0 && prevScoreUpdate !== redCellsCleared) {
             redCellUpdate = Math.ceil(redCellUpdate * 0.95);
             prevScoreUpdate = redCellsCleared;
         }
