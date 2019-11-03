@@ -52,6 +52,7 @@ function main() {
         doGameMode();
         //update frame count
         frameNum += 1;
+        console.log(frameNum);
     }
 }
 
