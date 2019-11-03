@@ -1,7 +1,7 @@
 /*frame count used to define how events happen, such as
 generating a red cell that must be clicked every 1 frames vs
 moving the laser bar every 2 frames */
-let laserUpdate = 70; //update laser every "x" frames
+let laserUpdate = 50; //update laser every "x" frames
 let redCellUpdate = 60; //update red cells every "x" frames
 let frameNum = 0;
 //initiate game speed (in milliseconds)
