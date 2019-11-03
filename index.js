@@ -7,8 +7,8 @@ let frameNum = 0;
 //initiate game speed (in milliseconds)
 const tickSpeed = 20;
 //initiate field (x * y)
-const fieldXMax = 20;
-const fieldYMax = 10;
+const fieldXMax = 14;
+const fieldYMax = 7;
 let field = initiateField();
 setInterval(main, tickSpeed); // calling main every frame
 //initiate variable characters
