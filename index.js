@@ -16,7 +16,7 @@ const clearCellChar = "-", redCellChar = "R", laserChar = "B"; //console display
 const clearCellCol = "grey", redCellCol = "red", laserCol = "blue"; //canvas display
 //initiate canvas
 let canvas = document.querySelector("canvas");
-let pixelSize = canvas.width / fieldXMax;
+let pixelSize = 500 / fieldXMax;
 canvas.width = pixelSize * fieldXMax;
 canvas.height = pixelSize * fieldYMax;
 let c = canvas.getContext("2d");

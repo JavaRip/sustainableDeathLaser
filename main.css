@@ -13,16 +13,18 @@ td {
 }
 
 #laserfield-draw {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  z-index: 1;
   border: none;
 }
 
 #laserfield-table {
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: absolute;
+  top: 10%;
+  left: 30%;
+  z-index: 2;
   border: none;
 }
 
